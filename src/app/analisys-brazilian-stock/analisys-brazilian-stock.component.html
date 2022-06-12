@@ -1,0 +1,53 @@
+<div>
+    <div>
+        <label for="ticker">Ticker</label>
+        <input type="text" id="ticker" required [(ngModel)]="ticker" (ngModelChange)="tickerChanged($event)" name="ticker">
+    </div>
+    <div>
+        <button (click)="search()">Submit</button>
+    </div>
+</div>
+
+<div *ngIf="stockAnalisys">
+    <div>
+        <label>Ticker: </label> {{stockAnalisys.ticker}}
+    </div>
+    <div>
+        <label>Está em setor perene: </label> {{stockAnalisys.estaEmSetorPerene}}
+    </div>
+    <div>
+        <label>Está fora de recuperação judicial: </label> {{stockAnalisys.estaForaDeRecuperacaoJudicial}}
+    </div>
+    <div>
+        <label>Possui bom nivel retorno sobre patrimonio: </label>
+        {{stockAnalisys.possuiBomNivelDividaLiquidaSobrePatrimonioLiquido}}
+    </div>
+    <div>
+        <label>Possui bom nivel de crescimento de lucro nos ultimos 5 anos: </label>
+        {{stockAnalisys.possuiBomNivelCrescimentoLucroNosUltimos5Anos}}
+    </div>
+    <div>
+        <label>Possui bom nivel margem liquida: </label> {{stockAnalisys.possuiBomNivelMargemLiquida}}
+    </div>
+    <div>
+        <label>Possui boa capacidade de quitar dívida no curto prazo: </label>
+        {{stockAnalisys.possuiBomNivelDeCapacidadeDeQuitarDividaNoCurtoPrazo}}
+    </div>
+    <div>
+        <label>Possui nivel seguro de dívida sobre patrimônio líquido: </label>
+        {{stockAnalisys.possuiBomNivelDividaLiquidaSobrePatrimonioLiquido}}
+    </div>
+    <div>
+        <label>Possui bom preço sobre o lucro e patrimônio: </label>
+        {{stockAnalisys.possuiBomPrecoEmRelacaoAoLucroAssimComoValorPatrimonial}}
+    </div>
+
+    <!--
+    <span *ngIf='student.active' (click)='updateActive(false)'>Inactive</span>
+   
+    <span *ngIf='!student.active' (click)='updateActive(true)'>Active</span>
+   
+    <span (click)='deleteStudent()'>Delete</span>
+   -->
+    <hr />
+</div>
