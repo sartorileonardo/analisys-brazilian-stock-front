@@ -1,53 +1,49 @@
-<div>
-    <div>
-        <label for="ticker">Ticker</label>
-        <input type="text" id="ticker" required [(ngModel)]="ticker" (ngModelChange)="tickerChanged($event)" name="ticker">
-    </div>
-    <div>
-        <button (click)="search()">Submit</button>
-    </div>
-</div>
 
-<div *ngIf="stockAnalisys">
-    <div>
-        <label>Ticker: </label> {{stockAnalisys.ticker}}
-    </div>
-    <div>
-        <label>Está em setor perene: </label> {{stockAnalisys.estaEmSetorPerene}}
-    </div>
-    <div>
-        <label>Está fora de recuperação judicial: </label> {{stockAnalisys.estaForaDeRecuperacaoJudicial}}
-    </div>
-    <div>
-        <label>Possui bom nivel retorno sobre patrimonio: </label>
-        {{stockAnalisys.possuiBomNivelDividaLiquidaSobrePatrimonioLiquido}}
-    </div>
-    <div>
-        <label>Possui bom nivel de crescimento de lucro nos ultimos 5 anos: </label>
-        {{stockAnalisys.possuiBomNivelCrescimentoLucroNosUltimos5Anos}}
-    </div>
-    <div>
-        <label>Possui bom nivel margem liquida: </label> {{stockAnalisys.possuiBomNivelMargemLiquida}}
-    </div>
-    <div>
-        <label>Possui boa capacidade de quitar dívida no curto prazo: </label>
-        {{stockAnalisys.possuiBomNivelDeCapacidadeDeQuitarDividaNoCurtoPrazo}}
-    </div>
-    <div>
-        <label>Possui nivel seguro de dívida sobre patrimônio líquido: </label>
-        {{stockAnalisys.possuiBomNivelDividaLiquidaSobrePatrimonioLiquido}}
-    </div>
-    <div>
-        <label>Possui bom preço sobre o lucro e patrimônio: </label>
-        {{stockAnalisys.possuiBomPrecoEmRelacaoAoLucroAssimComoValorPatrimonial}}
-    </div>
+<div class="container mt-3" *ngIf="stockAnalisys">
+  
+    <div class="row mt-3">
+      <div class="col">
+        <h2>Análise de empresas brasileiras de capital aberto listadas na bolsa B3</h2>
+        <form>
+          <div class="form-group">
+            <label>Análise por Ticker</label>
+            <input type="text" class="form-control" placeholder="Insira o ticker da empresa, ex: ABEV3, VALE3, PETR4, BBAS3" id="ticker" required [(ngModel)]="ticker" (ngModelChange)="tickerChanged($event)" name="ticker">
+          </div>
+  
+          <button type="button" class="btn btn-primary btn-lg btn-block" (click)="search()">Analisar</button>
 
-    <!--
-    <span *ngIf='student.active' (click)='updateActive(false)'>Inactive</span>
-   
-    <span *ngIf='!student.active' (click)='updateActive(true)'>Active</span>
-   
-    <span (click)='deleteStudent()'>Delete</span>
-   -->
-    <hr />
-</div>
+          <div class="form-group">
+            <label>Está em setor perene</label>
+            <input type="text" class="form-control" disabled="true" [(ngModel)]="stockAnalisys.estaEmSetorPerene" name="estaEmSetorPerene">
+          </div>
+
+          <div class="form-group">
+            <label>Está fora de recuperação judicial</label>
+            <input type="text" class="form-control" disabled="true" [(ngModel)]="stockAnalisys.estaForaDeRecuperacaoJudicial" name="estaForaDeRecuperacaoJudicial">
+          </div>
+
+          <div class="form-group">
+            <label>Possui bom nivel retorno sobre patrimonio</label>
+            <input type="text" class="form-control" disabled="true" [(ngModel)]="stockAnalisys.possuiBomNivelRetornoSobrePatrimonio" name="possuiBomNivelRetornoSobrePatrimonio">
+          </div>
+
+          <div class="form-group">
+            <label>Possui bom nivel de crescimento de lucro nos ultimos 5 anos</label>
+            <input type="text" class="form-control" disabled="true" [(ngModel)]="stockAnalisys.possuiBomNivelCrescimentoLucroNosUltimos5Anos" name="possuiBomNivelCrescimentoLucroNosUltimos5Anos">
+          </div>
+
+          <div class="form-group">
+            <label>Possui bom nivel margem liquida</label>
+            <input type="text" class="form-control" disabled="true" [(ngModel)]="stockAnalisys.possuiBomNivelMargemLiquida" name="possuiBomNivelMargemLiquida">
+          </div>
+
+          <div class="form-group">
+            <label>Possui bom preço sobre o lucro e patrimônio</label>
+            <input type="text" class="form-control" disabled="true" [(ngModel)]="stockAnalisys.possuiBomPrecoEmRelacaoAoLucroAssimComoValorPatrimonial" name="possuiBomPrecoEmRelacaoAoLucroAssimComoValorPatrimonial">
+          </div>
+
+
+        </form>
+      </div>
+    </div>
+  </div>
