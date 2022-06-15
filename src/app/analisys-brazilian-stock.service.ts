@@ -8,7 +8,8 @@ import { AnalisysBrazilianStockDTO } from './analisys-brazilian-stock.dto';
 })
 export class AnalisysBrazilianStockService {
 
-  private baseUrl = "https://analisys-brazilian-stock.herokuapp.com/stock/analisys";
+  //private baseUrl = "https://analisys-brazilian-stock.herokuapp.com/stock/analisys";
+  private baseUrl = "http://localhost:8888/stock/analisys";
 
   constructor(private http: HttpClient) { }
 
