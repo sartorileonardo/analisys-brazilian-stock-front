@@ -7,9 +7,11 @@ export class AnalisysBrazilianStockDTO {
     possuiBomNivelRetornoSobrePatrimonio: boolean = false;
     possuiBomNivelCrescimentoLucroNosUltimos5Anos: boolean = false;
     possuiBomNivelMargemLiquida: boolean = false;
+    possuiBomNivelMargemEbit: boolean = false;
     possuiBomNivelDeCapacidadeDeQuitarDividaNoCurtoPrazo: boolean = false;
     possuiBomNivelDividaLiquidaSobrePatrimonioLiquido: boolean = false;
     possuiBomPrecoEmRelacaoAoLucroAssimComoValorPatrimonial: boolean = false;
+    possuiBomNivelPassivosSobreAtivos: boolean = false;
     nomeEmpresa: string = "";
     segmentoEmpresa: string = "";
     avaliacaoGeralDTO: AvaliacaoGeralDTO = AvaliacaoGeralDTO.INDEFINIDO;
