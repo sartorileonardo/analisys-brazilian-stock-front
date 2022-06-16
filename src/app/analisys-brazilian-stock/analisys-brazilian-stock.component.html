@@ -6,6 +6,8 @@
       <form>
         <div class="form-floating">
           <input type="text" class="form-control"
+            minlength="4"
+            maxlength="6"
             placeholder="Insira o ticker da empresa, ex: ABEV3, VALE3, PETR4, BBAS3" id="ticker" required
             [(ngModel)]="ticker" (ngModelChange)="tickerChanged($event)" name="ticker">
         </div>

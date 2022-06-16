@@ -54,7 +54,12 @@ export class AnalisysBrazilianStockComponent implements OnInit {
 
     search(){
         this.getAnalisys()
+        this.clearTicker()
         console.log("Search")
+    }
+
+    private clearTicker(){
+        this.ticker = ""
     }
 
 }
