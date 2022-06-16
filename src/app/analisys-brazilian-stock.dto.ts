@@ -1,3 +1,4 @@
+import { AvaliacaoGeralDTO } from "./analisys-brazilian-stock.enum";
 
 export class AnalisysBrazilianStockDTO {
     ticker: string = "";
@@ -11,4 +12,5 @@ export class AnalisysBrazilianStockDTO {
     possuiBomPrecoEmRelacaoAoLucroAssimComoValorPatrimonial: boolean = false;
     nomeEmpresa: string = "";
     segmentoEmpresa: string = "";
+    avaliacaoGeralDTO: AvaliacaoGeralDTO = AvaliacaoGeralDTO.INDEFINIDO;
 }
