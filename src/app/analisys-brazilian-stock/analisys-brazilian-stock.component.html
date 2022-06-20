@@ -13,12 +13,35 @@
         </div>
 
         <button type="button" class="btn btn-primary btn-lg btn-block" (click)="search()">Analisar</button>
-        <!--
-          <div class="form-group">
-            <label>Está em setor perene</label>
-            <input type="text" class="form-control" disabled="true" [(ngModel)]="stockAnalisys.estaEmSetorPerene" name="estaEmSetorPerene">
-          </div>
-          -->
+
+          <fieldset class="border p-2">
+            
+            <legend class="w-auto">Avaliação</legend>
+
+            <div style="display: flex;">
+
+              <div style="background-color: blue; padding: 1.5%; width: 1.5%; border-radius: 50%; margin-right: 0.5%;" id="leg-otimo"></div>
+              <label for="leg-otimo">Ótimo</label>
+              <div style="margin-right: 5%;"></div>
+  
+              <div style="background-color: green; padding: 1.5%; width: 1.5%; border-radius: 50%; margin-right: 0.5%;" id="leg-bom"></div>
+              <label for="leg-bom">Bom</label>
+              <div style="margin-right: 5%;"></div>
+  
+              <div style="background-color: yellow; padding: 1.5%; width: 1.5%; border-radius: 50%; margin-right: 0.5%;" id="leg-regular"></div>
+              <label for="leg-regular">Regular</label>
+              <div style="margin-right: 5%;"></div>
+  
+              <div style="background-color: red; padding: 1.5%; width: 1.5%; border-radius: 50%; margin-right: 0.5%;" id="leg-ruim"></div>
+              <label for="leg-ruim">Ruim</label>
+              <div style="margin-right: 5%;"></div>
+
+            </div>
+
+
+         </fieldset>
+         
+          
         <br />
         <br />
         <br />
