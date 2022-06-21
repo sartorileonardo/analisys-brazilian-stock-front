@@ -12,6 +12,10 @@ export class AnalisysBrazilianStockComponent implements OnInit {
 
     ticker: string = ""
 
+    tickerIsEmpty: boolean = true
+
+    progressBarValue: number = 0
+
     stockAnalisys = new AnalisysBrazilianStockDTO()
 
     constructor(private service: AnalisysBrazilianStockService){}
@@ -26,12 +30,19 @@ export class AnalisysBrazilianStockComponent implements OnInit {
     }
 
     private getAnalisys(){
+        this.loadProgressBar()
         this.service.getAnalisys(this.ticker).subscribe(
             res => {
                 this.stockAnalisys = this.parseResponseToDTO(res)
+                this.tickerIsEmpty = res == undefined
             }
         )
+        this.loadProgressBar()
         console.log(this.stockAnalisys)
+    }
+
+    private loadProgressBar(){
+        this.progressBarValue += 50
     }
 
     private parseResponseToDTO(res: any){
@@ -55,11 +66,22 @@ export class AnalisysBrazilianStockComponent implements OnInit {
     search(){
         this.getAnalisys()
         this.clearTicker()
+        this.clearProgressBar()
         console.log("Search")
     }
 
     private clearTicker(){
         this.ticker = ""
     }
+
+    private async clearProgressBar(){
+        await this.delay(2000);
+        this.progressBarValue = 0
+    }
+
+    private delay(ms: number) {
+        return new Promise( resolve => setTimeout(resolve, ms) );
+    }
+    
 
 }
