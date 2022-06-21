@@ -16,6 +16,8 @@ export class AnalisysBrazilianStockComponent implements OnInit {
 
     progressBarValue: number = 0
 
+    progressBarIsVisible: boolean = false
+
     stockAnalisys = new AnalisysBrazilianStockDTO()
 
     constructor(private service: AnalisysBrazilianStockService){}
@@ -29,7 +31,8 @@ export class AnalisysBrazilianStockComponent implements OnInit {
         console.log(this.ticker)
     }
 
-    private getAnalisys(){
+    private async getAnalisys(){
+        this.enableVisibleProgressBar()
         this.loadProgressBar()
         this.service.getAnalisys(this.ticker).subscribe(
             res => {
@@ -38,6 +41,8 @@ export class AnalisysBrazilianStockComponent implements OnInit {
             }
         )
         this.loadProgressBar()
+        await this.delay(2000)
+        this.disableVisibleProgressBar()
         console.log(this.stockAnalisys)
     }
 
@@ -72,6 +77,14 @@ export class AnalisysBrazilianStockComponent implements OnInit {
 
     private clearTicker(){
         this.ticker = ""
+    }
+
+    private enableVisibleProgressBar(){
+        this.progressBarIsVisible = true
+    }
+
+    private disableVisibleProgressBar(){
+        this.progressBarIsVisible = false
     }
 
     private async clearProgressBar(){
