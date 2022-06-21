@@ -5,51 +5,46 @@
       <h2>Análise de empresas brasileiras de capital aberto listadas na bolsa B3</h2>
       <form>
         <div class="form-floating">
-          <input type="text" class="form-control"
-            minlength="4"
-            maxlength="6"
+          <input type="text" class="form-control" minlength="4" maxlength="6"
             placeholder="Insira o ticker da empresa, ex: ABEV3, VALE3, PETR4, BBAS3" id="ticker" required
             [(ngModel)]="ticker" (ngModelChange)="tickerChanged($event)" name="ticker">
         </div>
 
         <button type="button" class="btn btn-primary btn-lg btn-block" (click)="search()">Analisar</button>
-        
+
         <br />
 
         <div class="progress" style="height: 20px;" *ngIf="progressBarIsVisible">
           Carregando...
-          <div class="progress-bar" role="progressbar" [ngStyle]="{width: progressBarValue + '%'}"   aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar" role="progressbar" [ngStyle]="{width: progressBarValue + '%'}" aria-valuenow="25"
+            aria-valuemin="0" aria-valuemax="100"></div>
         </div>
 
-          <fieldset class="border p-2">
-            
-            <legend class="w-auto">Avaliação</legend>
+        <fieldset class="border p-2">
 
-            <div style="display: flex;">
+          <legend class="w-auto">Avaliação</legend>
 
-              <div class="leg-otimo" id="leg-otimo"></div>
-              <label class="space-item-leg" for="leg-otimo">Ótimo</label>
-  
-              <div class="leg-bom" id="leg-bom"></div>
-              <label class="space-item-leg" for="leg-bom">Bom</label>
-  
-              <div class="leg-regular" id="leg-regular"></div>
-              <label class="space-item-leg" for="leg-regular">Regular</label>
-  
-              <div class="leg-ruim" id="leg-ruim"></div>
-              <label class="space-item-leg" for="leg-ruim">Ruim</label>
+          <div style="display: flex;">
 
-            </div>
+            <div class="leg-otimo" id="leg-otimo"></div>
+            <label class="space-item-leg" for="leg-otimo">Ótimo</label>
 
+            <div class="leg-bom" id="leg-bom"></div>
+            <label class="space-item-leg" for="leg-bom">Bom</label>
 
-         </fieldset>
-         
-          
-        <br />
-        <br />
+            <div class="leg-regular" id="leg-regular"></div>
+            <label class="space-item-leg" for="leg-regular">Regular</label>
+
+            <div class="leg-ruim" id="leg-ruim"></div>
+            <label class="space-item-leg" for="leg-ruim">Ruim</label>
+
+          </div>
+
+        </fieldset>
+
         <br />
 
-        <div [class]="stockAnalisys.avaliacaoGeralDTO" style="max-width: 25rem;" *ngIf="!tickerIsEmpty">
+        <div [class]="stockAnalisys.avaliacaoGeralDTO" style="max-width: 25rem;margin: auto;" *ngIf="!tickerIsEmpty">
           <div class="card-header">
             <p>{{stockAnalisys.ticker}}</p>
           </div>
