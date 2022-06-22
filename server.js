@@ -5,9 +5,9 @@ const path = require('path');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static('./dist/analisys-brazilian-stock-front'));
+app.use(express.static(path.join(__dirname,'./dist/analisys-brazilian-stock-front')));
 
-app.get('/*', (req, res) =>
+app.get('/', (req, res) =>
     res.sendFile('dist/analisys-brazilian-stock-front/index.html', {root: 'dist/analisys-brazilian-stock-front/'}),
 );
 
