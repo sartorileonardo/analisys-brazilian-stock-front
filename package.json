@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "node index.js",
     "build": "ng build",
-    "heroku-postbuild": "ng build --prod",
+    "heroku-prebuild": "echo This runs before Heroku installs dependencies.",
+    "heroku-postbuild": "echo This runs after Heroku installs dependencies, but before Heroku prunes and caches dependencies.",
+    "heroku-cleanup": "echo This runs after Heroku prunes and caches dependencies.",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
