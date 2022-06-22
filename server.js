@@ -8,7 +8,7 @@ const app = express();
 app.use(express.static('./dist/analisys-brazilian-stock-front'));
 
 app.get('/*', (req, res) =>
-    res.sendFile('src/index.html', {root: 'dist/analisys-brazilian-stock-front/'}),
+    res.sendFile('dist/analisys-brazilian-stock-front/index.html', {root: 'dist/analisys-brazilian-stock-front/'}),
 );
 
 // Start the app by listening on the default Heroku port
