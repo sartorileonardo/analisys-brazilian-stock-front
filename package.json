@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node index.js",
+    "start": "node server.js",
     "build": "ng build",
     "heroku-prebuild": "echo This runs before Heroku installs dependencies.",
     "heroku-postbuild": "echo This runs after Heroku installs dependencies, but before Heroku prunes and caches dependencies.",
