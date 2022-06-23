@@ -1,11 +1,14 @@
 const express = require('express');
 const app = express();
 
-app.use(express.static('./dist/'));
+app.use(express.static(__dirname + '/dist/analisys-brazilian-stock-front'));
 
-app.get('/*', (req, res) => {
-  res.sendFile('index.html', { root: 'dist/' });
+// Link index.html of build folder with router.
+app.get('/*', function (req, res) {
+    res.sendFile('index.html', { root: 'dist/analisys-brazilian-stock-front/' }
+    );
 });
+
  
 // Start the server
 const PORT = process.env.PORT || 8080;
