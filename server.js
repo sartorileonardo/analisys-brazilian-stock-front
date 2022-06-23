@@ -1,11 +1,10 @@
 const express = require('express');
 const app = express();
+
+app.use(express.static("./analisys-brazilian-stock-front/dist/"));
  
-app.get('/', (req, res) => {
-  res
-    .status(200)
-    .send('Hello server is running')
-    .end();
+app.get('*', (req, res) => {
+    res.sendFile(`./analisys-brazilian-stock-front/dist/index.html`); // load the single view file (angular will handle the page changes on the front-end)
 });
  
 // Start the server
