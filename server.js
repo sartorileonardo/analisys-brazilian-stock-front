@@ -1,16 +1,16 @@
-//Install express server
 const express = require('express');
-const path = require('path');
-
 const app = express();
-
-// Serve only the static files form the dist directory
-app.use(express.static('./dist/analisys-heroku local:startbrazilian-stock-front'));
-
-app.get('/*', function(req, res) {
-    res.sendFile('index.html', {root: 'dist/analisys-brazilian-stock-front'}
-  );
+ 
+app.get('/', (req, res) => {
+  res
+    .status(200)
+    .send('Hello server is running')
+    .end();
 });
-
-// Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 3000);
+ 
+// Start the server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
+});
