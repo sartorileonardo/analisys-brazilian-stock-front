@@ -1,11 +1,18 @@
 const express = require('express');
-const path = require('path');
-
 const app = express();
 
 app.use(express.static(__dirname + '/dist/analisys-brazilian-stock-front'));
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname + '/dist/analisys-brazilian-stock-front/index.html'));
+
+// Link index.html of build folder with router.
+app.get('/*', function (req, res) {
+    res.sendFile('index.html', { root: 'dist/analisys-brazilian-stock-front/' }
+    );
 });
 
-app.listen(process.env.PORT || 4200);
+ 
+// Start the server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
+});
