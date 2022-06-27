@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AnalisysBrazilianStockDTO } from "../analisys-brazilian-stock.dto";
 import { AvaliacaoGeralDTO } from "../analisys-brazilian-stock.enum";
 import { AnalisysBrazilianStockService } from "../analisys-brazilian-stock.service";
+import { TickerDTO } from "../ticker.model";
 
 
 @Component({
@@ -11,6 +12,8 @@ import { AnalisysBrazilianStockService } from "../analisys-brazilian-stock.servi
 export class AnalisysBrazilianStockComponent implements OnInit {
 
     ticker: string = ""
+
+    tickers: TickerDTO[] = []
 
     tickerIsEmpty: boolean = true
 
@@ -24,6 +27,8 @@ export class AnalisysBrazilianStockComponent implements OnInit {
 
     ngOnInit(): void {
         //this.getAnalisys()
+        this.tickers = this.service.getTickers()
+        console.log("Tickers: \n" + this.tickers[0].code + this.tickers[0].description)
     }
 
     tickerChanged(event: string){
