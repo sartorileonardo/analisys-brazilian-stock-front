@@ -15,6 +15,7 @@
             [(ngModel)]="ticker" (ngModelChange)="tickerChanged($event)" name="ticker">
           -->
             <select name="selectedQuantity" id="aantal" class="form-control" [ngModel]="ticker" (ngModelChange)="tickerChanged($event)">
+              <option value="" disabled selected>Selecione a empresa</option>
               <option *ngFor="let ticker of tickers" [value]="ticker.code">{{ticker.description.toUpperCase()}}</option> 
            </select>
         </div>
