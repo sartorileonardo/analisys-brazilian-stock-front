@@ -48,10 +48,9 @@ export class AnalisysBrazilianStockComponent implements OnInit {
 
                 if(res !== undefined){
                     this.loadProgressBar()
-                    await this.delay(2000)
                     this.disableVisibleProgressBar()
                 }
-                
+
             }
         )
 
@@ -95,7 +94,8 @@ export class AnalisysBrazilianStockComponent implements OnInit {
         this.progressBarIsVisible = true
     }
 
-    private disableVisibleProgressBar(){
+    private async disableVisibleProgressBar(){
+        await this.delay(2000)
         this.progressBarIsVisible = false
     }
 
