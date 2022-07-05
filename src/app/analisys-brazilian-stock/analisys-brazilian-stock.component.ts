@@ -40,14 +40,21 @@ export class AnalisysBrazilianStockComponent implements OnInit {
         this.enableVisibleProgressBar()
         this.loadProgressBar()
         this.service.getAnalisys(this.ticker).subscribe(
-            res => {
+
+            async res => {
+
                 this.stockAnalisys = this.parseResponseToDTO(res)
                 this.tickerIsEmpty = res == undefined
+
+                if(res !== undefined){
+                    this.loadProgressBar()
+                    await this.delay(2000)
+                    this.disableVisibleProgressBar()
+                }
+                
             }
         )
-        this.loadProgressBar()
-        await this.delay(2000)
-        this.disableVisibleProgressBar()
+
         console.log(this.stockAnalisys)
     }
 
