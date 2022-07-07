@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AnalisysBrazilianStockDTO } from "../analisys-brazilian-stock.dto";
-import { AvaliacaoGeralDTO } from "../analisys-brazilian-stock.enum";
+import { AvaliacaoGeral } from "../analisys-brazilian-stock.enum";
 import { AnalisysBrazilianStockService } from "../analisys-brazilian-stock.service";
 import { TickerDTO } from "../ticker.model";
 
@@ -62,20 +62,20 @@ export class AnalisysBrazilianStockComponent implements OnInit {
     }
 
     private parseResponseToDTO(res: any){
-        let avaliacaoGeralDTO = AvaliacaoGeralDTO.INDEFINIDO;
-        switch(res["avaliacaoGeralDTO"]){
-            case 'OTIMO': avaliacaoGeralDTO = AvaliacaoGeralDTO.OTIMO;
+        let avaliacaoGeral = AvaliacaoGeral.INDEFINIDO;
+        switch(res["avaliacaoGeral"]){
+            case 'OTIMO': avaliacaoGeral = AvaliacaoGeral.OTIMO;
             break;
-            case 'BOM': avaliacaoGeralDTO = AvaliacaoGeralDTO.BOM;
+            case 'BOM': avaliacaoGeral = AvaliacaoGeral.BOM;
             break;
-            case 'REGULAR': avaliacaoGeralDTO = AvaliacaoGeralDTO.REGULAR;
+            case 'REGULAR': avaliacaoGeral = AvaliacaoGeral.REGULAR;
             break;
-            case 'RUIM': avaliacaoGeralDTO = AvaliacaoGeralDTO.RUIM;
+            case 'RUIM': avaliacaoGeral = AvaliacaoGeral.RUIM;
             break;
-            default: avaliacaoGeralDTO = AvaliacaoGeralDTO.INDEFINIDO;
+            default: avaliacaoGeral = AvaliacaoGeral.INDEFINIDO;
         }
         const dto = res as AnalisysBrazilianStockDTO
-        dto.avaliacaoGeralDTO = avaliacaoGeralDTO
+        dto.avaliacaoGeral = avaliacaoGeral
         return dto
     }
 

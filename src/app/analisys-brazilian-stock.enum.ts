@@ -1,5 +1,5 @@
 
-export enum AvaliacaoGeralDTO {
+export enum AvaliacaoGeral {
     OTIMO = "card text-white bg-primary mb-3",
     BOM = "card text-white bg-success mb-3",
     REGULAR = "card text-white bg-warning mb-3",

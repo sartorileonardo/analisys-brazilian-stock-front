@@ -1,4 +1,4 @@
-import { AvaliacaoGeralDTO } from "./analisys-brazilian-stock.enum";
+import { AvaliacaoGeral } from "./analisys-brazilian-stock.enum";
 
 export class AnalisysBrazilianStockDTO {
     ticker: string = "";
@@ -10,9 +10,9 @@ export class AnalisysBrazilianStockDTO {
     possuiBomNivelMargemEbit: boolean = false;
     possuiBomNivelDeCapacidadeDeQuitarDividaNoCurtoPrazo: boolean = false;
     possuiBomNivelDividaLiquidaSobrePatrimonioLiquido: boolean = false;
-    possuiBomPrecoEmRelacaoAoLucroAssimComoValorPatrimonial: boolean = false;
+    possuiBomPrecoEmRelacaoAoValorPatrimonial: boolean = false;
     possuiBomNivelPassivosSobreAtivos: boolean = false;
     nomeEmpresa: string = "";
     segmentoEmpresa: string = "";
-    avaliacaoGeralDTO: AvaliacaoGeralDTO = AvaliacaoGeralDTO.INDEFINIDO;
+    avaliacaoGeral: AvaliacaoGeral = AvaliacaoGeral.INDEFINIDO;
 }
