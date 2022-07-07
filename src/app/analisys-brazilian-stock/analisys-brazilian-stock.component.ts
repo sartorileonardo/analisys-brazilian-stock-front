@@ -51,6 +51,10 @@ export class AnalisysBrazilianStockComponent implements OnInit {
                     this.disableVisibleProgressBar()
                 }
 
+            },
+
+            error => {
+                alert("Desculpe, ocorreu um erro inesperado. \nTente novamente mais tarde ou selecione outro ticker!")
             }
         )
 
