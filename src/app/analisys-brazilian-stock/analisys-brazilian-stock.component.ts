@@ -36,7 +36,15 @@ export class AnalisysBrazilianStockComponent implements OnInit {
         console.log(this.ticker)
     }
 
+    validIfTickerIsPresent(){
+        if(this.ticker == undefined || this.ticker.trim() == ""){
+            alert("Selecione uma empresa para análise!");
+            return;
+        }
+    }
+
     private async getAnalisys(){
+        this.validIfTickerIsPresent()
         this.enableVisibleProgressBar()
         this.loadProgressBar()
         this.service.getAnalisys(this.ticker).subscribe(
