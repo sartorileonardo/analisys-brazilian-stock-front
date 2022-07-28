@@ -23,7 +23,7 @@ export class AnalisysBrazilianStockComponent implements OnInit {
 
     stockAnalisys = new AnalisysBrazilianStockDTO()
 
-    constructor(private service: AnalisysBrazilianStockService){}
+    constructor(private service: AnalisysBrazilianStockService) { }
 
     ngOnInit(): void {
         //this.getAnalisys()
@@ -31,59 +31,56 @@ export class AnalisysBrazilianStockComponent implements OnInit {
         console.log("Tickers: \n" + this.tickers[0].code + this.tickers[0].description)
     }
 
-    tickerChanged(event: string){
+    tickerChanged(event: string) {
         this.ticker = event
         console.log(this.ticker)
     }
 
-    validIfTickerIsPresent(){
-        if(this.ticker == undefined || this.ticker.trim() == ""){
+    private tickerIsValid(): boolean {
+        if (this.ticker == undefined || this.ticker.trim() == "") {
             alert("Selecione uma empresa para análise!");
-            return;
+            return false;
+        }
+        return true;
+    }
+
+    private async getAnalisys() {
+        if (this.tickerIsValid()) {
+            this.enableVisibleProgressBar()
+            this.loadProgressBar()
+            this.service.getAnalisys(this.ticker).subscribe(
+                async res => {
+                    this.stockAnalisys = this.parseResponseToDTO(res)
+                    this.tickerIsEmpty = res == undefined
+
+                    if (res !== undefined) {
+                        this.loadProgressBar()
+                        this.disableVisibleProgressBar()
+                    }
+                },
+                error => {
+                    alert("Desculpe, ocorreu um erro inesperado. \nTente novamente mais tarde ou selecione outro ticker!")
+                }
+            )
+            console.log(this.stockAnalisys)
         }
     }
 
-    private async getAnalisys(){
-        this.validIfTickerIsPresent()
-        this.enableVisibleProgressBar()
-        this.loadProgressBar()
-        this.service.getAnalisys(this.ticker).subscribe(
-
-            async res => {
-
-                this.stockAnalisys = this.parseResponseToDTO(res)
-                this.tickerIsEmpty = res == undefined
-
-                if(res !== undefined){
-                    this.loadProgressBar()
-                    this.disableVisibleProgressBar()
-                }
-
-            },
-
-            error => {
-                alert("Desculpe, ocorreu um erro inesperado. \nTente novamente mais tarde ou selecione outro ticker!")
-            }
-        )
-
-        console.log(this.stockAnalisys)
-    }
-
-    private loadProgressBar(){
+    private loadProgressBar() {
         this.progressBarValue += 50
     }
 
-    private parseResponseToDTO(res: any){
+    private parseResponseToDTO(res: any) {
         let avaliacaoGeral = AvaliacaoGeral.INDEFINIDO;
-        switch(res["avaliacaoGeral"]){
+        switch (res["avaliacaoGeral"]) {
             case 'OTIMO': avaliacaoGeral = AvaliacaoGeral.OTIMO;
-            break;
+                break;
             case 'BOM': avaliacaoGeral = AvaliacaoGeral.BOM;
-            break;
+                break;
             case 'REGULAR': avaliacaoGeral = AvaliacaoGeral.REGULAR;
-            break;
+                break;
             case 'RUIM': avaliacaoGeral = AvaliacaoGeral.RUIM;
-            break;
+                break;
             default: avaliacaoGeral = AvaliacaoGeral.INDEFINIDO;
         }
         const dto = res as AnalisysBrazilianStockDTO
@@ -91,34 +88,34 @@ export class AnalisysBrazilianStockComponent implements OnInit {
         return dto
     }
 
-    search(){
+    search() {
         this.getAnalisys()
         this.clearTicker()
         this.clearProgressBar()
         console.log("Search")
     }
 
-    private clearTicker(){
+    private clearTicker() {
         this.ticker = ""
     }
 
-    private enableVisibleProgressBar(){
+    private enableVisibleProgressBar() {
         this.progressBarIsVisible = true
     }
 
-    private async disableVisibleProgressBar(){
+    private async disableVisibleProgressBar() {
         await this.delay(2000)
         this.progressBarIsVisible = false
     }
 
-    private async clearProgressBar(){
+    private async clearProgressBar() {
         await this.delay(2000);
         this.progressBarValue = 0
     }
 
     private delay(ms: number) {
-        return new Promise( resolve => setTimeout(resolve, ms) );
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
-    
+
 
 }
