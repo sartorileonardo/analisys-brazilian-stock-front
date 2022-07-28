@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AnalisysBrazilianStockDTO } from './analisys-brazilian-stock.dto';
 import { TickerDTO } from './ticker.model';
 
 @Injectable({
@@ -23,9 +22,9 @@ export class AnalisysBrazilianStockService {
     .filter(it => it[0].slice(-1).includes("3"))
     .map(it => new TickerDTO(it[0], it[1].replace("- ", "").toUpperCase()))
     .sort(function(a,b) {
-      let x = a.description.toLowerCase();
-      let y = b.description.toLowerCase();
-      return x < y ? -1 : x > y ? 1 : 0;
+      let first = a.description.toLowerCase();
+      let second = b.description.toLowerCase();
+      return first < second ? -1 : first > second ? 1 : 0;
   })
   }
 
