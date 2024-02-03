@@ -49,11 +49,11 @@ export class AnalisysBrazilianStockComponent implements OnInit {
             this.enableVisibleProgressBar()
             this.loadProgressBar()
             this.service.getAnalisys(this.ticker).subscribe(
-                async res => {
-                    this.stockAnalisys = this.parseResponseToDTO(res)
-                    this.tickerIsEmpty = res == undefined
+                async response => {
+                    this.stockAnalisys = this.parseResponseToDTO(response)
+                    this.tickerIsEmpty = response == undefined
 
-                    if (res !== undefined) {
+                    if (response !== undefined) {
                         this.loadProgressBar()
                         this.disableVisibleProgressBar()
                     }
@@ -70,20 +70,20 @@ export class AnalisysBrazilianStockComponent implements OnInit {
         this.progressBarValue += 50
     }
 
-    private parseResponseToDTO(res: any) {
-        let avaliacaoGeral = AvaliacaoGeral.INDEFINIDO;
-        switch (res["avaliacaoGeral"]) {
-            case 'OTIMO': avaliacaoGeral = AvaliacaoGeral.OTIMO;
+    private parseResponseToDTO(response: any) {
+        let avaliacaoGeral = AvaliacaoGeral.UNDEFINITE;
+        switch (response["score"]) {
+            case 'EXCELLENT': avaliacaoGeral = AvaliacaoGeral.EXCELLENT;
                 break;
-            case 'BOM': avaliacaoGeral = AvaliacaoGeral.BOM;
+            case 'GOOD': avaliacaoGeral = AvaliacaoGeral.GOOD;
                 break;
-            case 'REGULAR': avaliacaoGeral = AvaliacaoGeral.REGULAR;
+            case 'FAIR': avaliacaoGeral = AvaliacaoGeral.FAIR;
                 break;
-            case 'RUIM': avaliacaoGeral = AvaliacaoGeral.RUIM;
+            case 'BAD': avaliacaoGeral = AvaliacaoGeral.BAD;
                 break;
-            default: avaliacaoGeral = AvaliacaoGeral.INDEFINIDO;
+            default: avaliacaoGeral = AvaliacaoGeral.UNDEFINITE;
         }
-        const dto = res as AnalisysBrazilianStockDTO
+        const dto = response as AnalisysBrazilianStockDTO
         dto.avaliacaoGeral = avaliacaoGeral
         return dto
     }

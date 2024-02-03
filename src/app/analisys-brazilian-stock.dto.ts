@@ -14,5 +14,5 @@ export class AnalisysBrazilianStockDTO {
     possuiBomNivelPassivosSobreAtivos: boolean = false;
     nomeEmpresa: string = "";
     segmentoEmpresa: string = "";
-    avaliacaoGeral: AvaliacaoGeral = AvaliacaoGeral.INDEFINIDO;
+    avaliacaoGeral: AvaliacaoGeral = AvaliacaoGeral.UNDEFINITE;
 }
