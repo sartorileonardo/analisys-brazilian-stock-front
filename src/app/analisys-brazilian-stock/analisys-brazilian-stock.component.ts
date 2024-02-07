@@ -28,7 +28,7 @@ export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
     constructor(private service: AnalisysBrazilianStockService, private cacheService: CacheService) { }
 
     ngOnInit(): void {
-        //this.getAnalisys()
+        this.getTickersMostTraded();
         this.tickers = this.service.getTickers()
         console.log("Tickers: \n" + this.tickers[0].code + this.tickers[0].description)
     }
@@ -44,6 +44,16 @@ export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
             return false;
         }
         return true;
+    }
+
+    private getTickersMostTraded(){
+        let tickers = this.service.getTickersMostTraded();
+        tickers.forEach(tickerMostTraded => {
+            this.ticker = tickerMostTraded;
+            this.getAnalisys();
+            this.delay(100);
+        })
+        this.clearTicker();
     }
 
     private async getAnalisys() {
@@ -105,6 +115,7 @@ export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
     private getDTOFromJson(json: string) {
         return classTransformer.plainToClass(AnalisysBrazilianStockDTO, JSON.parse(json));
     }
+
 
     search() {
         this.getAnalisys()
