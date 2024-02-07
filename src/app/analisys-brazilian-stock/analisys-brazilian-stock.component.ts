@@ -1,15 +1,17 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { AnalisysBrazilianStockDTO } from "../analisys-brazilian-stock.dto";
 import { AvaliacaoGeral } from "../analisys-brazilian-stock.enum";
 import { AnalisysBrazilianStockService } from "../analisys-brazilian-stock.service";
+import { CacheService } from "../analisys-brazilian-stock-cache";
 import { TickerDTO } from "../ticker.model";
+import * as classTransformer from 'class-transformer';
 
 
 @Component({
     selector: 'analisys-brazilian-stock',
     templateUrl: './analisys-brazilian-stock.component.html'
 })
-export class AnalisysBrazilianStockComponent implements OnInit {
+export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
 
     ticker: string = ""
 
@@ -23,10 +25,10 @@ export class AnalisysBrazilianStockComponent implements OnInit {
 
     stockAnalisys = new AnalisysBrazilianStockDTO()
 
-    constructor(private service: AnalisysBrazilianStockService) { }
+    constructor(private service: AnalisysBrazilianStockService, private cacheService: CacheService) { }
 
     ngOnInit(): void {
-        //this.getAnalisys()
+        this.getTickersMostTraded();
         this.tickers = this.service.getTickers()
         console.log("Tickers: \n" + this.tickers[0].code + this.tickers[0].description)
     }
@@ -44,25 +46,47 @@ export class AnalisysBrazilianStockComponent implements OnInit {
         return true;
     }
 
+    private getTickersMostTraded(){
+        let tickers = this.service.getTickersMostTraded();
+        tickers.forEach(tickerMostTraded => {
+            this.ticker = tickerMostTraded;
+            this.getAnalisys();
+            this.delay(100);
+        })
+        this.clearTicker();
+    }
+
     private async getAnalisys() {
         if (this.tickerIsValid()) {
             this.enableVisibleProgressBar()
             this.loadProgressBar()
-            this.service.getAnalisys(this.ticker).subscribe(
-                async response => {
-                    this.stockAnalisys = this.parseResponseToDTO(response)
-                    this.tickerIsEmpty = response == undefined
 
-                    if (response !== undefined) {
-                        this.loadProgressBar()
-                        this.disableVisibleProgressBar()
+            if (this.cacheService.exist(this.ticker)) {
+                this.stockAnalisys = this.cacheService.get(this.ticker);
+                console.log("Recovered by cache: " + this.ticker);
+            } else {
+                this.service.getAnalisys(this.ticker).subscribe(
+                    async response => {
+                        this.stockAnalisys = this.parseResponseToDTO(response)
+                        console.log("Recovered by API: " + this.ticker);
+
+                        this.tickerIsEmpty = response == undefined
+
+                        this.cacheService.put(this.stockAnalisys);
+                        console.log("Added into cache: " + this.ticker);
+
+                        if (response !== undefined) {
+                            this.loadProgressBar()
+                            this.disableVisibleProgressBar()
+                        }
+                    },
+                    error => {
+                        alert("Desculpe, ocorreu um erro inesperado. \nTente novamente mais tarde ou selecione outro ticker!")
                     }
-                },
-                error => {
-                    alert("Desculpe, ocorreu um erro inesperado. \nTente novamente mais tarde ou selecione outro ticker!")
-                }
-            )
-            console.log(this.stockAnalisys)
+                )
+            }
+
+
         }
     }
 
@@ -87,6 +111,11 @@ export class AnalisysBrazilianStockComponent implements OnInit {
         dto.avaliacaoGeral = avaliacaoGeral
         return dto
     }
+
+    private getDTOFromJson(json: string) {
+        return classTransformer.plainToClass(AnalisysBrazilianStockDTO, JSON.parse(json));
+    }
+
 
     search() {
         this.getAnalisys()
@@ -115,6 +144,10 @@ export class AnalisysBrazilianStockComponent implements OnInit {
 
     private delay(ms: number) {
         return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    ngOnDestroy() {
+        this.cacheService.clear();
     }
 
 
