@@ -51,7 +51,7 @@ export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
         tickers.forEach(tickerMostTraded => {
             this.ticker = tickerMostTraded;
             this.getAnalisys();
-            this.delay(100);
+            this.delay(10);
         })
         this.clearTicker();
     }
