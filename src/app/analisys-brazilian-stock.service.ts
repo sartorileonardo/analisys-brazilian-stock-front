@@ -14,18 +14,8 @@ export class AnalisysBrazilianStockService {
 
   constructor(private http: HttpClient) { }
 
-  headerDict = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Access-Control-Allow-Headers': 'Content-Type',
-  }
-
-  requestOptions = {
-    headers: new HttpHeaders(this.headerDict),
-  };
-
   getAnalisys(ticker: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}` + `/${ticker}`, this.requestOptions);
+    return this.http.get(`${this.baseUrl}` + `/${ticker}`);
   }
 
   getTickers(): TickerDTO[] {
