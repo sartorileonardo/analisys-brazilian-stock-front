@@ -28,7 +28,7 @@ export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
     constructor(private service: AnalisysBrazilianStockService, private cacheService: CacheService) { }
 
     ngOnInit(): void {
-        this.getTickersMostTraded();
+        //this.getTickersMostTraded();
         this.tickers = this.service.getTickers()
         console.log("Tickers: \n" + this.tickers[0].code + this.tickers[0].description)
     }
