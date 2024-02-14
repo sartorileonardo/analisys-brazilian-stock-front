@@ -2,10 +2,8 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { AnalisysBrazilianStockDTO } from "../analisys-brazilian-stock.dto";
 import { AvaliacaoGeral } from "../analisys-brazilian-stock.enum";
 import { AnalisysBrazilianStockService } from "../analisys-brazilian-stock.service";
-import { CacheService } from "../analisys-brazilian-stock-cache";
+import { CacheService } from "../analisys-brazilian-stock-cache.service";
 import { TickerDTO } from "../ticker.model";
-import * as classTransformer from 'class-transformer';
-
 
 @Component({
     selector: 'analisys-brazilian-stock',
@@ -111,11 +109,6 @@ export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
         dto.avaliacaoGeral = avaliacaoGeral
         return dto
     }
-
-    private getDTOFromJson(json: string) {
-        return classTransformer.plainToClass(AnalisysBrazilianStockDTO, JSON.parse(json));
-    }
-
 
     search() {
         this.getAnalisys()

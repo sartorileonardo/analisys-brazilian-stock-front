@@ -15,4 +15,5 @@ export class AnalisysBrazilianStockDTO {
     nomeEmpresa: string = "";
     segmentoEmpresa: string = "";
     avaliacaoGeral: AvaliacaoGeral = AvaliacaoGeral.UNDEFINITE;
+    createDate: Date = new Date();
 }
