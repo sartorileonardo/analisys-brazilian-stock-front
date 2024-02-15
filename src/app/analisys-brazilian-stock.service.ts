@@ -9,13 +9,26 @@ import { TickerDTO } from './ticker.model';
 export class AnalisysBrazilianStockService {
 
   //private baseUrl = "https://analisys-brazilian-stock.herokuapp.com/stock/analisys";
-  private baseUrl = "http://localhost:8888/stock/analisys";
-  //private baseUrl = "https://8888-cs-668fcc3e-e234-4e59-9688-e53360ba1d42.cs-us-east1-vpcf.cloudshell.dev/stock/analisys"
+  //private baseUrl = "http://localhost:8888/stock/analisys";
+  private baseUrl = "https://8888-cs-668fcc3e-e234-4e59-9688-e53360ba1d42.cs-us-east1-vpcf.cloudshell.dev/stock/analisys"
 
   constructor(private http: HttpClient) { }
 
+  headerDict = {
+    'Content-Type': 'application/json',
+    'Accept': '*/*',
+    'Access-Control-Allow-Credentials': 'true',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': '*',
+    'Access-Control-Allow-Headers': '*'
+  }
+
+  requestOptions = {
+    headers: new HttpHeaders(this.headerDict),
+  };
+
   getAnalisys(ticker: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}` + `/${ticker}`);
+    return this.http.get(`${this.baseUrl}` + `/${ticker}`, this.requestOptions);
   }
 
   getTickers(): TickerDTO[] {
