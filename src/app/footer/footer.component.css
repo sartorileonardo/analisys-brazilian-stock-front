@@ -1,0 +1,47 @@
+footer{
+    /*background: linear-gradient(to right, #fff 50%, #9c9c9c 50%);*/   
+    margin-top: 20px;
+}
+.footer_content{
+    min-height: 5%;
+    background: blue;
+    text-align: center;
+}
+.logo img{
+    width: 100%;
+}
+.foo_logo_desc{
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 15px 0;
+}
+.footer_phone a{
+    border-left: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid ;
+}
+.footer_email,
+.footer_phone{
+    padding: 0;
+}
+.footer_email a,
+.footer_phone a{
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: blue;
+    display: block;
+    padding: 20px 0;
+}
+
+.footer_email a:hover,
+.footer_phone a:hover{
+    background: blue;
+    color: #333333;
+    background-color: blue;
+    text-decoration: none;
+    transition: all 1s ease 0s;
+}
