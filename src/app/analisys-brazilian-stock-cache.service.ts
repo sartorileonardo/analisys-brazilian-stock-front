@@ -9,8 +9,8 @@ export class CacheService {
 
   cacheList: Array<AnalisysBrazilianStockDTO>;
 
-  //Clear cache every 3 months
-  timerClearCache = setInterval(() => this.clear(), 7889232000);
+  //Verify is cache expired once week
+  timerClearCache = setInterval(() => this.cleanListByExpiredDate(this.cacheList, new Date()), 1000 * 60 * 60 * 24 * 7);
 
   private constructor() {
     this.cacheList = [];
@@ -36,6 +36,8 @@ export class CacheService {
   private cleanListByExpiredDate(cacheList: any[], currentDate: Date): any[] {
     const threeMonthsAgo = new Date(currentDate.getFullYear(), currentDate.getMonth() - 3, currentDate.getDate());
     const filterList = cacheList.filter(it => it.data > threeMonthsAgo);
+
+    console.log('Verified if cache is expired!');
 
     return filterList;
   }
