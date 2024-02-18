@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TickerDTO } from './ticker.model';
+import { TickerDTO } from '../../ticker.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AnalisysBrazilianStockService {
 
-  private baseUrl = "https://analisys-brazilian-stock-36da1af9e42b.herokuapp.com/stock/analisys";
-  //private baseUrl = "http://localhost:8888/stock/analisys";
-
+  //private baseUrl = "https://analisys-brazilian-stock-36da1af9e42b.herokuapp.com/stock/analisys";
+  private baseUrl = "http://localhost:8888/stock/analisys";
 
   constructor(private http: HttpClient) { }
 

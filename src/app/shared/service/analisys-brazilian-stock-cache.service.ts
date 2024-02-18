@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AnalisysBrazilianStockDTO } from './analisys-brazilian-stock.dto';
+import { AnalisysBrazilianStockDTO } from '../../analisys-brazilian-stock/analisys-brazilian-stock.dto';
 
 
 @Injectable({
