@@ -62,6 +62,9 @@ export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
             if (this.cacheService.exist(this.ticker)) {
                 this.stockAnalisys = this.cacheService.get(this.ticker);
                 console.log("Recovered by cache: " + this.ticker);
+
+                this.disableProgressBar(this.stockAnalisys);
+
             } else {
                 this.service.getAnalisys(this.ticker).subscribe(
                     async response => {
@@ -73,10 +76,7 @@ export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
                         this.cacheService.put(this.stockAnalisys);
                         console.log("Added into cache: " + this.ticker);
 
-                        if (response !== undefined) {
-                            this.loadProgressBar()
-                            this.disableVisibleProgressBar()
-                        }
+                        this.disableProgressBar(response);
                     },
                     error => {
                         alert("Desculpe, ocorreu um erro inesperado. \nTente novamente mais tarde ou selecione outro ticker!")
@@ -85,6 +85,13 @@ export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
             }
 
 
+        }
+    }
+
+    private disableProgressBar(stockAnalisys: any): void{
+        if (this.stockAnalisys !== undefined) {
+            this.loadProgressBar();
+            this.disableVisibleProgressBar();
         }
     }
 
