@@ -44,13 +44,13 @@ export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
         return true;
     }
 
-    private getTickersMostTraded(){
+    private getTickersMostTraded() {
         let tickers = this.service.getTickersMostTraded();
         tickers.forEach(tickerMostTraded => {
-            this.ticker = tickerMostTraded;
-            this.getAnalisys();
-            this.delay(10);
-        })
+                this.ticker = tickerMostTraded;
+                this.getAnalisys();
+                this.delay(10000);
+            })
         this.clearTicker();
     }
 
@@ -79,7 +79,7 @@ export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
                         this.disableProgressBar(response);
                     },
                     error => {
-                        alert("Desculpe, ocorreu um erro inesperado. \nTente novamente mais tarde ou selecione outro ticker!")
+                        alert("Desculpe, ocorreu um erro inesperado com o ticker ["+this.ticker+"]. \nTente novamente mais tarde ou selecione outro ticker!")
                     }
                 )
             }
@@ -88,7 +88,7 @@ export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
         }
     }
 
-    private disableProgressBar(stockAnalisys: any): void{
+    private disableProgressBar(stockAnalisys: any): void {
         if (this.stockAnalisys !== undefined) {
             this.loadProgressBar();
             this.disableVisibleProgressBar();
