@@ -99,7 +99,7 @@ replaceTickers(tickers: [string, string][]): [string, string][] {
     ['BRFS3', ' - BRF'],
     ['BRKM3', ' - BRASKEM'],
     ['BRML3', ' - BR MALLS'],
-    ['BTOW3', ' - B2W'],
+    //['BTOW3', ' - B2W'],  
     ['CARD3', ' - CSU CARDSYSTEM'],
     ['CCRO3', ' - CCR'],
     ['CESP3', ' - CESP'],
