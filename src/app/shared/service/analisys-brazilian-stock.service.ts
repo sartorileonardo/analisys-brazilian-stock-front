@@ -8,7 +8,7 @@ import { TickerDTO } from '../../ticker.model';
 })
 export class AnalisysBrazilianStockService {
 
-  isProd: boolean = false;
+  isProd: boolean = true;
 
   private baseUrlProd = "https://analisys-brazilian-stock-36da1af9e42b.herokuapp.com/stock/analisys";
   private baseUrlDev = "http://localhost:8888/stock/analisys";
