@@ -1,2 +1,23 @@
+# Disallow all search engine bots from crawling the entire site
 User-agent: *
-Disallow:
+Disallow: /
+
+# Allow search engine bots to crawl specific pages (if needed)
+# For example, if you have a blog section, you could uncomment the following lines:
+# User-agent: Googlebot
+# Allow: /blog/
+# User-agent: Bingbot
+# Allow: /blog/
+
+# Allow all static content (images, CSS, JavaScript) to be crawled
+User-agent: *
+Allow: /assets/
+
+# Specify the location of your sitemap (if you have one)
+Sitemap: https://analisys-brazilian-stock-front.vercel.app/sitemap.xml
+
+# Specify the crawl-delay for the site (optional)
+Crawl-delay: 10
+
+# Specify the robots.txt tester path (optional)
+# Robots-txt-tester: https://example.com/robots-txt-tester.html
