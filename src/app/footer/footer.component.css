@@ -52,14 +52,7 @@ footer {
     transition: all 1s ease 0s;
 }
 
-.btn-link {
-    color: #28a745;
-    /* Same color as btn-success */
-    text-decoration: none;
-    /* Remove underline */
-}
-
-.btn-link:hover {
-    color: #218838;
-    /* Darker color for hover effect */
+.logo {
+    width: 30%; /* Adjust this percentage based on your design */
+    height: auto; /* Let the height adjust proportionally */
 }
