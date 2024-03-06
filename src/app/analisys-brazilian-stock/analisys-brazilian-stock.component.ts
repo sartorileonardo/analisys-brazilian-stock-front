@@ -27,8 +27,21 @@ export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         //this.getTickersMostTraded();
-        this.tickers = this.service.getTickers()
-        console.log("Tickers: \n" + this.tickers[0].code + this.tickers[0].description)
+        this.toWakeUpBackendService();
+        this.tickers = this.service.getTickers();
+        console.log("Tickers: \n" + this.tickers[0].code + this.tickers[0].description);
+    }
+
+    private toWakeUpBackendService(){
+        let wakeUpTicker = "VALE3";
+        this.service.getAnalisys(wakeUpTicker).subscribe(
+            async response => {
+                console.log("Chamada para acordar o serviço realizada com sucesso!");
+            },
+            error => {
+                console.log("Desculpe, ocorreu um erro inesperado ao acordar o serviço com ticker ["+wakeUpTicker+"]. \nTente novamente mais tarde!")
+            }
+        )
     }
 
     tickerChanged(event: string) {
