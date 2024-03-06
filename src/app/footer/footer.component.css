@@ -1,33 +1,39 @@
-footer{
-    /*background: blue; */ 
+footer {
+    /*background: blue; */
     margin-top: 50%;
 }
-.footer_content{
+
+.footer_content {
     min-height: 5%;
     background: blue;
     text-align: center;
 }
-.logo img{
+
+.logo img {
     width: 65%;
 }
-.foo_logo_desc{
+
+.foo_logo_desc {
     font-size: 75%;
     font-weight: 75%;
     text-transform: uppercase;
     color: #fff;
     padding: auto;
 }
-.footer_phone a{
+
+.footer_phone a {
     border-left: 1px solid white;
     border-left: 1px solid white;
-    border-right: 1px solid ;
+    border-right: 1px solid;
 }
+
 .footer_email,
-.footer_phone{
+.footer_phone {
     padding: 0;
 }
+
 .footer_email a,
-.footer_phone a{
+.footer_phone a {
     font-size: 75%;
     font-weight: 75%;
     text-transform: uppercase;
@@ -38,10 +44,22 @@ footer{
 }
 
 .footer_email a:hover,
-.footer_phone a:hover{
+.footer_phone a:hover {
     background: blue;
     color: #333333;
     background-color: blue;
     text-decoration: none;
     transition: all 1s ease 0s;
+}
+
+.btn-link {
+    color: #28a745;
+    /* Same color as btn-success */
+    text-decoration: none;
+    /* Remove underline */
+}
+
+.btn-link:hover {
+    color: #218838;
+    /* Darker color for hover effect */
 }

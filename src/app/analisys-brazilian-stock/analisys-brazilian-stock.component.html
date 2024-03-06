@@ -2,8 +2,8 @@
 
   <div class="row mt-3">
     <div class="col">
-        <h2 class="title">Análise de empresas brasileiras de capital aberto</h2>
-        <h4 class="title"><i>(Não é recomendação de compra/venda)</i></h4>
+        <h1 class="title">Análise de empresas brasileiras de capital aberto</h1>
+        <h2 class="title"><i>(Não é recomendação de compra/venda)</i></h2>
 
       <form>
         
@@ -14,13 +14,14 @@
             placeholder="Insira o ticker da empresa, ex: ABEV3, VALE3, PETR4, BBAS3" id="ticker" required
             [(ngModel)]="ticker" (ngModelChange)="tickerChanged($event)" name="ticker">
           -->
-            <select name="selectedQuantity" id="aantal" class="form-control" [ngModel]="ticker" (ngModelChange)="tickerChanged($event)">
+          <label for="selectedQuantity" style="display: none;">Selecione a empresa</label>
+            <select name="selectedQuantity" id="selectedQuantity" class="form-control" [ngModel]="ticker" (ngModelChange)="tickerChanged($event)">
               <option value="" disabled selected hidden>Selecione a empresa</option>
               <option *ngFor="let ticker of tickers" [value]="ticker.code">{{ticker.description.toUpperCase()}}</option> 
            </select>
         </div>
 
-        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="search()">Analisar</button>
+        <button type="button" class="btn btn-success btn-lg btn-block" (click)="search()">Analisar</button>
 
         <br />
 
