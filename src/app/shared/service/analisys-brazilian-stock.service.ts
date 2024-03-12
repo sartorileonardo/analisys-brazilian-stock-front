@@ -143,7 +143,7 @@ replaceTickers(tickers: [string, string][]): [string, string][] {
     ['LCAM3', ' - LOCAMERICA'],
     ['LEVE3', ' - METAL LEVE'],
     ['LIGT3', ' - LIGHT S/A'],
-    ['LINX3', ' - LINX'],
+    //['LINX3', ' - LINX'],
     ['LREN3', ' - LOJAS RENNER'],
     ['MGLU3', ' - MAGAZ LUIZA'],
     ['MRFG3', ' - MARFRIG'],
