@@ -19,7 +19,7 @@ a {
 }
 
 /* Override button background color */
-.button, button {
+.button, button, .progress {
     background-color: blue !important;
 }
 
@@ -32,3 +32,5 @@ a {
 input, textarea, select, button {
     border-color: #4e8cff !important;
 }
+
+
