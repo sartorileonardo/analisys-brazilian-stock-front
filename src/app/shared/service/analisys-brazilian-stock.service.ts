@@ -35,7 +35,7 @@ export class AnalisysBrazilianStockService {
 
   getTickers(): TickerDTO[] {
     return this.allTickers
-      .filter(it => it[0].slice(-1).includes("3"))
+      .filter(it => it[0].slice(-1).includes("3") || it[0].slice(-1).includes("4"))
       .map(it => new TickerDTO(it[0], it[1].replace("- ", "").toUpperCase()))
       .sort(function (a, b) {
         let first = a.description.toLowerCase();
@@ -87,7 +87,7 @@ replaceTickers(tickers: [string, string][]): [string, string][] {
   allTickers: [string, string][] = [
     ['ABEV3', ' - AMBEV S/A'],
     ['AERI3', ' - AERIS'],
-    ['AZUL3', ' - AZUL'],
+    ['AZUL4', ' - AZUL'],
     ['B3SA3', ' - B3'],
     ['BBAS3', ' - BANCO DO BRASIL'],
     ['BBDC3', ' - BANCO BRADESCO'],
