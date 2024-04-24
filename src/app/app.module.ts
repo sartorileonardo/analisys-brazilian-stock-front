@@ -3,16 +3,28 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AnalisysBrazilianStockComponent } from './analisys-brazilian-stock/analisys-brazilian-stock.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { MenuComponent } from './menu/menu.component';
+import { HomeComponent } from './home/home.component';
+import { CustomAnalysisComponent } from './custom-analysis/custom-analysis.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { BuildingPageComponent } from './building-page/building-page.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SimpleAnalisysComponent } from './simple-analisys/simple-analisys.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    AnalisysBrazilianStockComponent
+    SimpleAnalisysComponent,
+    MenuComponent,
+    HomeComponent,
+    CustomAnalysisComponent,
+    QuizComponent,
+    BuildingPageComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

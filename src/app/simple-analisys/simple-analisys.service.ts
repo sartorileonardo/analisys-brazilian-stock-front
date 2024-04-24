@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TickerDTO } from '../../ticker.model';
+import { TickerDTO } from '../ticker.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AnalisysBrazilianStockService {
+export class SimpleAnalisysService {
 
   isProd: boolean = true;
 

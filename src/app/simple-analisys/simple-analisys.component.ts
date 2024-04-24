@@ -1,15 +1,15 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { AnalisysBrazilianStockDTO } from "./analisys-brazilian-stock.dto";
-import { AvaliacaoGeral } from "./analisys-brazilian-stock.enum";
-import { AnalisysBrazilianStockService } from "../shared/service/analisys-brazilian-stock.service";
-import { CacheService } from "../shared/service/analisys-brazilian-stock-cache.service";
+import { SimpleAnalisysDTO } from "./simple-analisys.dto";
+import { SimpleAnalisysEstimate } from "./simple-analisys-estimate.enum";
+import { SimpleAnalisysService } from "./simple-analisys.service";
+import { CacheService } from "../shared/service/simple-analisys-cache.service";
 import { TickerDTO } from "../ticker.model";
 
 @Component({
-    selector: 'analisys-brazilian-stock',
-    templateUrl: './analisys-brazilian-stock.component.html'
+    selector: 'simple-analysis',
+    templateUrl: './simple-analisys.component.html'
 })
-export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
+export class SimpleAnalisysComponent implements OnInit, OnDestroy {
 
     ticker: string = ""
 
@@ -21,9 +21,9 @@ export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
 
     progressBarIsVisible: boolean = false
 
-    stockAnalisys = new AnalisysBrazilianStockDTO()
+    stockAnalisys = new SimpleAnalisysDTO()
 
-    constructor(private service: AnalisysBrazilianStockService, private cacheService: CacheService) { }
+    constructor(private service: SimpleAnalisysService, private cacheService: CacheService) { }
 
     ngOnInit(): void {
         //this.getTickersMostTraded();
@@ -113,19 +113,19 @@ export class AnalisysBrazilianStockComponent implements OnInit, OnDestroy {
     }
 
     private parseResponseToDTO(response: any) {
-        let avaliacaoGeral = AvaliacaoGeral.UNDEFINITE;
+        let avaliacaoGeral = SimpleAnalisysEstimate.UNDEFINITE;
         switch (response["score"]) {
-            case 'EXCELLENT': avaliacaoGeral = AvaliacaoGeral.EXCELLENT;
+            case 'EXCELLENT': avaliacaoGeral = SimpleAnalisysEstimate.EXCELLENT;
                 break;
-            case 'GOOD': avaliacaoGeral = AvaliacaoGeral.GOOD;
+            case 'GOOD': avaliacaoGeral = SimpleAnalisysEstimate.GOOD;
                 break;
-            case 'FAIR': avaliacaoGeral = AvaliacaoGeral.FAIR;
+            case 'FAIR': avaliacaoGeral = SimpleAnalisysEstimate.FAIR;
                 break;
-            case 'BAD': avaliacaoGeral = AvaliacaoGeral.BAD;
+            case 'BAD': avaliacaoGeral = SimpleAnalisysEstimate.BAD;
                 break;
-            default: avaliacaoGeral = AvaliacaoGeral.UNDEFINITE;
+            default: avaliacaoGeral = SimpleAnalisysEstimate.UNDEFINITE;
         }
-        const dto = response as AnalisysBrazilianStockDTO
+        const dto = response as SimpleAnalisysDTO
         dto.avaliacaoGeral = avaliacaoGeral
         return dto
     }
