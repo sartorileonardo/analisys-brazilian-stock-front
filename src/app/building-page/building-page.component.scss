@@ -1,0 +1,43 @@
+
+
+/* Centering container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full height of viewport */
+  }
+  
+  /* Title */
+  .title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Image */
+  img {
+    max-width: 100%; /* Ensure image does not exceed its container width */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  /* Paragraph */
+  p {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+    .title {
+      font-size: 20px;
+    }
+    
+    p {
+      font-size: 16px;
+    }
+  }
+  

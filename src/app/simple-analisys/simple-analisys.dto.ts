@@ -1,6 +1,6 @@
-import { AvaliacaoGeral } from "./analisys-brazilian-stock.enum";
+import { SimpleAnalisysEstimate } from "./simple-analisys-estimate.enum";
 
-export class AnalisysBrazilianStockDTO {
+export class SimpleAnalisysDTO {
     ticker: string = "";
     estaEmSetorPerene: boolean = false;
     estaForaDeRecuperacaoJudicial: boolean = false;
@@ -14,6 +14,6 @@ export class AnalisysBrazilianStockDTO {
     possuiBomNivelPassivosSobreAtivos: boolean = false;
     nomeEmpresa: string = "";
     segmentoEmpresa: string = "";
-    avaliacaoGeral: AvaliacaoGeral = AvaliacaoGeral.UNDEFINITE;
+    avaliacaoGeral: SimpleAnalisysEstimate = SimpleAnalisysEstimate.UNDEFINITE;
     createDate: Date = new Date();
 }

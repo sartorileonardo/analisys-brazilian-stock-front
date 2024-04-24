@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AnalisysBrazilianStockDTO } from '../../analisys-brazilian-stock/analisys-brazilian-stock.dto';
+import { SimpleAnalisysDTO } from '../../simple-analisys/simple-analisys.dto';
 
 
 @Injectable({
@@ -7,7 +7,7 @@ import { AnalisysBrazilianStockDTO } from '../../analisys-brazilian-stock/analis
 })
 export class CacheService {
 
-  cacheList: Array<AnalisysBrazilianStockDTO>;
+  cacheList: Array<SimpleAnalisysDTO>;
 
   //Verify is cache expired once week
   timerClearCache = setInterval(() => this.cleanListByExpiredDate(this.cacheList, new Date()), 1000 * 60 * 60 * 24 * 7);

@@ -1,5 +1,5 @@
 
-export enum AvaliacaoGeral {
+export enum SimpleAnalisysEstimate {
     EXCELLENT = "card text-white bg-primary mb-3",
     GOOD = "card text-white bg-success mb-3",
     FAIR = "card text-white bg-warning mb-3",
