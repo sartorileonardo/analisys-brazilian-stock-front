@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { SimpleAnalisysDTO } from "./simple-analisys.dto";
 import { SimpleAnalisysEstimate } from "./simple-analisys-estimate.enum";
 import { SimpleAnalisysService } from "./simple-analisys.service";
-import { CacheService } from "../shared/service/simple-analisys-cache.service";
+import { MemoryCacheService } from "../shared/service/memory-cache.service";
 import { TickerDTO } from "../ticker.model";
 
 @Component({
@@ -23,7 +23,7 @@ export class SimpleAnalisysComponent implements OnInit, OnDestroy {
 
     stockAnalisys = new SimpleAnalisysDTO()
 
-    constructor(private service: SimpleAnalisysService, private cacheService: CacheService) { }
+    constructor(private service: SimpleAnalisysService, private cacheService: MemoryCacheService) { }
 
     ngOnInit(): void {
         //this.getTickersMostTraded();
