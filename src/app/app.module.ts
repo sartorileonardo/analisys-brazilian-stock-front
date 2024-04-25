@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SimpleAnalisysComponent } from './simple-analisys/simple-analisys.component';
 import { EmoticonHappyComponent } from './emoticon-happy/emoticon-happy.component';
 import { EmoticonUnhappyComponent } from './emoticon-unhappy/emoticon-unhappy.component';
+import { EstimateFieldsetLegendComponent } from './estimate-fieldset-legend/estimate-fieldset-legend.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EmoticonUnhappyComponent } from './emoticon-unhappy/emoticon-unhappy.co
     BuildingPageComponent,
     PageNotFoundComponent,
     EmoticonHappyComponent,
-    EmoticonUnhappyComponent
+    EmoticonUnhappyComponent,
+    EstimateFieldsetLegendComponent
   ],
   imports: [
     BrowserModule,
