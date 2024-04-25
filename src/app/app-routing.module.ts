@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BuildingPageComponent } from './building-page/building-page.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SimpleAnalisysComponent } from './simple-analisys/simple-analisys.component';
+import { BuildingPageComponent } from './shared/components/building-page/building-page.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { SimpleAnalisysComponent } from './feature/simple-analisys/simple-analisys.component';
 
 const routes: Routes = [
   { path: 'home', component: SimpleAnalisysComponent },
