@@ -13,6 +13,8 @@ import { QuizComponent } from './quiz/quiz.component';
 import { BuildingPageComponent } from './building-page/building-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SimpleAnalisysComponent } from './simple-analisys/simple-analisys.component';
+import { EmoticonHappyComponent } from './emoticon-happy/emoticon-happy.component';
+import { EmoticonUnhappyComponent } from './emoticon-unhappy/emoticon-unhappy.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { SimpleAnalisysComponent } from './simple-analisys/simple-analisys.compo
     CustomAnalysisComponent,
     QuizComponent,
     BuildingPageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EmoticonHappyComponent,
+    EmoticonUnhappyComponent
   ],
   imports: [
     BrowserModule,
