@@ -1,0 +1,144 @@
+<app-menu></app-menu>
+<div class="container mt-3" *ngIf="stockAnalisys">
+
+  <div class="row mt-3">
+    <div class="col">
+        <h3 class="title">Análise de empresas brasileiras de capital aberto</h3>
+        <h4 class="title"><i>(Não é recomendação de compra/venda)</i></h4>
+
+        <br />
+
+      <form>
+        
+        <div class="form-floating">
+            <label for="selectedQuantity" style="display: none;">Selecione a empresa</label>
+            <select name="selectedQuantity" id="selectedQuantity" class="form-control" [ngModel]="ticker" (ngModelChange)="tickerChanged($event)">
+              <option value="" disabled selected hidden>Selecione a empresa</option>
+              <option *ngFor="let ticker of tickers" [value]="ticker.code">{{ticker.description.toUpperCase()}}</option> 
+           </select>
+        </div>
+
+        <br />
+
+        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="search()">Analisar</button>
+
+        <br />
+
+        <div class="progress" style="height: 20px;" *ngIf="progressBarIsVisible">
+          Carregando...
+          <div class="progress-bar" role="progressbar" [ngStyle]="{width: progressBarValue + '%'}" aria-valuenow="25"
+            aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+        <app-estimate-fieldset-legend></app-estimate-fieldset-legend>
+
+        <br />
+
+        <div [class]="stockAnalisys.avaliacaoGeral" style="max-width: 25rem;margin: auto;" *ngIf="!tickerIsEmpty">
+          <div class="card-header">
+            <p>{{stockAnalisys.ticker}}</p>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">
+              <p>{{stockAnalisys.segmentoEmpresa}}</p>
+            </h5>
+            <div class="card-text">
+
+              <div *ngIf="stockAnalisys.estaEmSetorPerene" style="display: flex; justify-content: space-between;">
+                Setor perene
+                <app-emoticon-happy></app-emoticon-happy>
+              </div>
+              <div *ngIf="!stockAnalisys.estaEmSetorPerene" style="display: flex; justify-content: space-between;">
+                Setor perene
+                <app-emoticon-unhappy></app-emoticon-unhappy>
+              </div>
+
+              <div *ngIf="stockAnalisys.estaForaDeRecuperacaoJudicial" style="display: flex; justify-content: space-between;">
+                Fora de recuperação judicial:
+                <app-emoticon-happy></app-emoticon-happy>
+              </div>
+              <div *ngIf="!stockAnalisys.estaForaDeRecuperacaoJudicial" style="display: flex; justify-content: space-between;">
+                Fora de recuperação judicial
+                <app-emoticon-unhappy></app-emoticon-unhappy>
+              </div>
+
+              <div *ngIf="stockAnalisys.possuiBomNivelRetornoSobrePatrimonio" style="display: flex; justify-content: space-between;">
+                Retorno sobre patrimônio
+                <app-emoticon-happy></app-emoticon-happy>
+              </div>
+              <div *ngIf="!stockAnalisys.possuiBomNivelRetornoSobrePatrimonio" style="display: flex; justify-content: space-between;">
+                Retorno sobre patrimônio
+                <app-emoticon-unhappy></app-emoticon-unhappy>
+              </div>
+
+              <div *ngIf="stockAnalisys.possuiBomNivelCrescimentoLucroNosUltimos5Anos" style="display: flex; justify-content: space-between;">
+                Crescimento de Lucro(Últ. 5 anos)
+                <app-emoticon-happy></app-emoticon-happy>
+              </div>
+              <div *ngIf="!stockAnalisys.possuiBomNivelCrescimentoLucroNosUltimos5Anos" style="display: flex; justify-content: space-between;">
+                Crescimento de Lucro(Últ. 5 anos)
+                <app-emoticon-unhappy></app-emoticon-unhappy>
+              </div>
+
+              <div *ngIf="stockAnalisys.possuiBomNivelMargemLiquida" style="display: flex; justify-content: space-between;">
+                Margem líquida
+                <app-emoticon-happy></app-emoticon-happy>
+              </div>
+              <div *ngIf="!stockAnalisys.possuiBomNivelMargemLiquida" style="display: flex; justify-content: space-between;">
+                Margem líquida
+                <app-emoticon-unhappy></app-emoticon-unhappy>
+              </div>
+
+              <div *ngIf="stockAnalisys.possuiBomNivelDeCapacidadeDeQuitarDividaNoCurtoPrazo" style="display: flex; justify-content: space-between;">
+                Capacidade de quitar dívida no curto prazo
+                <app-emoticon-happy></app-emoticon-happy>
+              </div>
+              <div *ngIf="!stockAnalisys.possuiBomNivelDeCapacidadeDeQuitarDividaNoCurtoPrazo" style="display: flex; justify-content: space-between;">
+                Capacidade de quitar dívida no curto prazo
+                <app-emoticon-unhappy></app-emoticon-unhappy>
+              </div>
+
+              <div *ngIf="stockAnalisys.possuiBomNivelDividaLiquidaSobrePatrimonioLiquido" style="display: flex; justify-content: space-between;">
+                Dívida líquida sobre patrimônio líquido
+                <app-emoticon-happy></app-emoticon-happy>
+              </div>
+              <div *ngIf="!stockAnalisys.possuiBomNivelDividaLiquidaSobrePatrimonioLiquido" style="display: flex; justify-content: space-between;">
+                Dívida líquida sobre patrimônio líquido
+                <app-emoticon-unhappy></app-emoticon-unhappy>
+              </div>
+
+              <div *ngIf="stockAnalisys.possuiBomPrecoEmRelacaoAoValorPatrimonial" style="display: flex; justify-content: space-between;">
+                Preço em relação ao patrimônio e lucro
+                <app-emoticon-happy></app-emoticon-happy>
+              </div>
+              <div *ngIf="!stockAnalisys.possuiBomPrecoEmRelacaoAoValorPatrimonial" style="display: flex; justify-content: space-between;">
+                Preço em relação ao patrimônio e lucro
+                <app-emoticon-unhappy></app-emoticon-unhappy>
+              </div>
+
+              <div *ngIf="stockAnalisys.possuiBomNivelPassivosSobreAtivos" style="display: flex; justify-content: space-between;">
+                Alavancagem financeira
+                <app-emoticon-happy></app-emoticon-happy>
+              </div>
+              <div *ngIf="!stockAnalisys.possuiBomNivelPassivosSobreAtivos" style="display: flex; justify-content: space-between;">
+                Alavancagem financeira
+                <app-emoticon-unhappy></app-emoticon-unhappy>
+              </div>
+
+              <div *ngIf="stockAnalisys.possuiBomNivelMargemEbit" style="display: flex; justify-content: space-between;">
+                Eficiência operacional
+                <app-emoticon-happy></app-emoticon-happy>
+              </div>
+              <div *ngIf="!stockAnalisys.possuiBomNivelMargemEbit" style="display: flex; justify-content: space-between;">
+                Eficiência operacional
+                <app-emoticon-unhappy></app-emoticon-unhappy>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

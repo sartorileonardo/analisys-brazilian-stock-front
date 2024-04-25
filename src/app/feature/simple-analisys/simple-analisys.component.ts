@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { SimpleAnalisysDTO } from "./simple-analisys.dto";
 import { SimpleAnalisysEstimate } from "./simple-analisys-estimate.enum";
 import { SimpleAnalisysService } from "./simple-analisys.service";
-import { MemoryCacheService } from "../shared/service/memory-cache.service";
-import { TickerDTO } from "../ticker.model";
+import { MemoryCacheService } from "../../shared/service/memory-cache.service";
+import { TickerDTO } from "../../ticker.model";
 
 @Component({
     selector: 'simple-analysis',
