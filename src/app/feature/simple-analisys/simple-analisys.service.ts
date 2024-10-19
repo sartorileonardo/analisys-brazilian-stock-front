@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { TickerDTO } from '../../ticker.model';
 
 @Injectable({
@@ -9,8 +9,12 @@ import { TickerDTO } from '../../ticker.model';
 export class SimpleAnalisysService {
 
   isProd: boolean = true;
+  hasBackend: boolean = false;
 
-  private baseUrlProd = "https://analisys-brazilian-stock-36da1af9e42b.herokuapp.com/stock/analisys";
+  private localDataPath = 'assets/stock-analisys-br.stocks.json'; // Path to local JSON file
+
+  private baseUrlProd = "https://bit.ly/3YsUlqM";
+  private baseUrlProdOld = "https://analisys-brazilian-stock-36da1af9e42b.herokuapp.com/stock/analisys";
   private baseUrlDev = "http://localhost:8888/stock/analisys";
 
   constructor(private http: HttpClient) { }
@@ -28,9 +32,33 @@ export class SimpleAnalisysService {
     headers: new HttpHeaders(this.headerDict),
   };
 
+  // Array com os dados carregados do arquivo JSON
+  private stockData: any[] = [
+    {
+      _id: 'EGIE3',
+      nomeEmpresa: 'ENGIE BRASIL',
+      estaEmSetorPerene: true,
+      estaForaDeRecuperacaoJudicial: true,
+      possuiBomNivelRetornoSobrePatrimonio: true,
+      possuiBomNivelCrescimentoLucroNosUltimos5Anos: false,
+      possuiBomNivelMargemLiquida: true,
+      possuiBomNivelMargemEbit: true,
+      possuiBomNivelDeCapacidadeDeQuitarDividaNoCurtoPrazo: true,
+      possuiBomNivelDividaLiquidaSobrePatrimonioLiquido: true,
+      possuiBomPrecoEmRelacaoAoValorPatrimonial: false,
+      possuiNegociacaoAtiva: true,
+    },
+    // Adicione o restante dos dados JSON aqui
+  ];
+
   getAnalisys(ticker: string): Observable<any> {
-    let baseUrl = this.isProd ? this.baseUrlProd : this.baseUrlDev;
-    return this.http.get(`${baseUrl}` + `/${ticker}`, this.requestOptions);
+    if (this.hasBackend) {
+      let baseUrl = this.isProd ? this.baseUrlProd : this.baseUrlDev;
+      return this.http.get(`${baseUrl}` + `/${ticker}`, this.requestOptions);
+    } else {
+      const stock = this.stockData.find((it) => it._id == ticker);
+      return of(stock);
+    }
   }
 
   getTickers(): TickerDTO[] {
