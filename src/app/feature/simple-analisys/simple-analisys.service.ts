@@ -13,7 +13,7 @@ export class SimpleAnalisysService {
 
   private localDataPath = 'assets/stock-analisys-br.stocks.json'; // Path to local JSON file
 
-  private baseUrlProd = "https://bit.ly/3YsUlqM";
+  private baseUrlProd = "http://ec2-34-238-161-55.compute-1.amazonaws.com:8888/stock/analisys";
   private baseUrlProdOld = "https://analisys-brazilian-stock-36da1af9e42b.herokuapp.com/stock/analisys";
   private baseUrlDev = "http://localhost:8888/stock/analisys";
 
