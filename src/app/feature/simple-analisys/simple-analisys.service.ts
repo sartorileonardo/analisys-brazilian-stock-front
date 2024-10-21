@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { catchError, Observable, of, throwError } from 'rxjs';
 import { TickerDTO } from '../../ticker.model';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class SimpleAnalisysService {
 
   private localDataPath = 'assets/stock-analisys-br.stocks.json'; // Path to local JSON file
 
-  private baseUrlProd = "https://bit.ly/3BUiSw0";
+  private baseUrlProd = "http://3.89.4.103:8888/stock/analisys";
   private baseUrlProdOld = "https://analisys-brazilian-stock-36da1af9e42b.herokuapp.com/stock/analisys";
   private baseUrlDev = "http://localhost:8888/stock/analisys";
 
@@ -32,33 +32,15 @@ export class SimpleAnalisysService {
     headers: new HttpHeaders(this.headerDict),
   };
 
-  // Array com os dados carregados do arquivo JSON
-  private stockData: any[] = [
-    {
-      _id: 'EGIE3',
-      nomeEmpresa: 'ENGIE BRASIL',
-      estaEmSetorPerene: true,
-      estaForaDeRecuperacaoJudicial: true,
-      possuiBomNivelRetornoSobrePatrimonio: true,
-      possuiBomNivelCrescimentoLucroNosUltimos5Anos: false,
-      possuiBomNivelMargemLiquida: true,
-      possuiBomNivelMargemEbit: true,
-      possuiBomNivelDeCapacidadeDeQuitarDividaNoCurtoPrazo: true,
-      possuiBomNivelDividaLiquidaSobrePatrimonioLiquido: true,
-      possuiBomPrecoEmRelacaoAoValorPatrimonial: false,
-      possuiNegociacaoAtiva: true,
-    },
-    // Adicione o restante dos dados JSON aqui
-  ];
-
   getAnalisys(ticker: string): Observable<any> {
-    if (this.hasBackend) {
-      let baseUrl = this.isProd ? this.baseUrlProd : this.baseUrlDev;
-      return this.http.get(`${baseUrl}` + `/${ticker}`, this.requestOptions);
-    } else {
-      const stock = this.stockData.find((it) => it._id == ticker);
-      return of(stock);
-    }
+    let baseUrl = this.isProd ? this.baseUrlProd : this.baseUrlDev;
+  
+    return this.http.get(`${baseUrl}/${ticker}`, this.requestOptions).pipe(
+      catchError((error) => {
+        console.error('Error fetching analysis:', error);
+        return throwError(() => new Error('Failed to fetch analysis data. Please try again later.'));
+      })
+    );
   }
 
   getTickers(): TickerDTO[] {
