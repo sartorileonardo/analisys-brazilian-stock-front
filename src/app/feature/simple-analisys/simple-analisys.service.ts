@@ -35,7 +35,7 @@ export class SimpleAnalisysService {
   getAnalisys(ticker: string): Observable<any> {
     let baseUrl = this.isProd ? this.baseUrlProd : this.baseUrlDev;
   
-    return this.http.get(`${baseUrl}/${ticker}`, this.requestOptions).pipe(
+    return this.http.get(`${baseUrl}/${ticker}`).pipe(
       catchError((error) => {
         console.error('Error fetching analysis:', error);
         return throwError(() => new Error('Failed to fetch analysis data. Please try again later.'));
