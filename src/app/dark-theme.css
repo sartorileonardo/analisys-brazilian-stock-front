@@ -33,4 +33,10 @@ input, textarea, select, button {
     border-color: #4e8cff !important;
 }
 
+#card, #stockAnalisys.avaliacaoGeral, #card-title {
+    background-color: #121212 !important;
+    border-color: #4e8cff !important;
+}
+
+
 

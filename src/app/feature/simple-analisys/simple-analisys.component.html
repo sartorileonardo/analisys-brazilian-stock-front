@@ -34,13 +34,13 @@
 
         <br />
 
-        <div [class]="stockAnalisys.avaliacaoGeral" style="max-width: 25rem;margin: auto;" *ngIf="!tickerIsEmpty">
+        <div id="card" [class]="stockAnalisys.avaliacaoGeral" style="max-width: 25rem;margin: auto;" *ngIf="!tickerIsEmpty">
           <div class="card-header">
             <p>{{stockAnalisys.ticker}}</p>
           </div>
           <div class="card-body">
             <h5 class="card-title">
-              <p>{{stockAnalisys.segmentoEmpresa}}</p>
+              <p>{{stockAnalisys.nomeEmpresa}}</p>
             </h5>
             <div class="card-text">
 
