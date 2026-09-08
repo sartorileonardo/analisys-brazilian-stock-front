@@ -12,8 +12,8 @@
     "test": "ng test"
   },
   "engines": {
-    "node": "16.13.1",
-    "npm": "8.12.1"
+    "node": "24.x",
+    "npm": "10.x"
   },
   "private": true,
   "dependencies": {
