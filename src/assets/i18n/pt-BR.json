@@ -1,0 +1,31 @@
+{
+  "MENU": {
+    "HOME": "Home",
+    "SIMPLE_ANALYSIS": "Análise simples"
+  },
+  "BUILDING": {
+    "TITLE": "Página em construção...",
+    "RETURN_TEXT": "Retorne ao início clicando na imagem acima ou",
+    "RETURN_LINK": "aqui"
+  }
+  ,
+  "SIMPLE": {
+    "TITLE": "Análise de empresas brasileiras de capital aberto",
+    "DISCLAIMER": "(Não é recomendação de compra/venda)",
+    "SELECT_COMPANY": "Selecione a empresa",
+    "ANALYZE": "Analisar",
+    "LOADING": "Carregando...",
+    "SECTION": {
+      "PERPETUAL_SECTOR": "Setor perene",
+      "OUT_OF_JUDICIAL_RECOVERY": "Fora de recuperação judicial",
+      "RETURN_ON_EQUITY": "Retorno sobre patrimônio",
+      "PROFIT_GROWTH_5Y": "Crescimento de Lucro(Últ. 5 anos)",
+      "NET_MARGIN": "Margem líquida",
+      "SHORT_TERM_DEBT_CAPACITY": "Capacidade de quitar dívida no curto prazo",
+      "NET_DEBT_OVER_EQUITY": "Dívida líquida sobre patrimônio líquido",
+      "PRICE_TO_BOOK_AND_EARNINGS": "Preço em relação ao patrimônio e lucro",
+      "FINANCIAL_LEVERAGE": "Alavancagem financeira",
+      "OPERATIONAL_EFFICIENCY": "Eficiência operacional"
+    }
+  }
+}

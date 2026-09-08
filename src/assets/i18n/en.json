@@ -1,0 +1,31 @@
+{
+  "MENU": {
+    "HOME": "Home",
+    "SIMPLE_ANALYSIS": "Simple analysis"
+  },
+  "BUILDING": {
+    "TITLE": "Page under construction...",
+    "RETURN_TEXT": "Return to home by clicking the image above or",
+    "RETURN_LINK": "here"
+  }
+  ,
+  "SIMPLE": {
+    "TITLE": "Analysis of Brazilian publicly traded companies",
+    "DISCLAIMER": "(This is not a buy/sell recommendation)",
+    "SELECT_COMPANY": "Select the company",
+    "ANALYZE": "Analyze",
+    "LOADING": "Loading...",
+    "SECTION": {
+      "PERPETUAL_SECTOR": "Perennial sector",
+      "OUT_OF_JUDICIAL_RECOVERY": "Out of judicial recovery",
+      "RETURN_ON_EQUITY": "Return on equity",
+      "PROFIT_GROWTH_5Y": "Profit growth (Last 5 years)",
+      "NET_MARGIN": "Net margin",
+      "SHORT_TERM_DEBT_CAPACITY": "Ability to pay short-term debt",
+      "NET_DEBT_OVER_EQUITY": "Net debt over equity",
+      "PRICE_TO_BOOK_AND_EARNINGS": "Price relative to book value and earnings",
+      "FINANCIAL_LEVERAGE": "Financial leverage",
+      "OPERATIONAL_EFFICIENCY": "Operational efficiency"
+    }
+  }
+}
