@@ -34,6 +34,10 @@
     "tslib": "^2.6.2",
     "zone.js": "^0.11.8"
   },
+  "optionalDependencies": {
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0"
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.13",
     "@angular/cli": "^14.2.13",

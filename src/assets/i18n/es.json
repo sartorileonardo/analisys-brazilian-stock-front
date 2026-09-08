@@ -1,0 +1,31 @@
+{
+  "MENU": {
+    "HOME": "Inicio",
+    "SIMPLE_ANALYSIS": "Análisis simple"
+  },
+  "BUILDING": {
+    "TITLE": "Página en construcción...",
+    "RETURN_TEXT": "Vuelva al inicio haciendo clic en la imagen de arriba o",
+    "RETURN_LINK": "aquí"
+  }
+  ,
+  "SIMPLE": {
+    "TITLE": "Análisis de empresas brasileñas que cotizan en bolsa",
+    "DISCLAIMER": "(No es una recomendación de compra/venta)",
+    "SELECT_COMPANY": "Seleccione la empresa",
+    "ANALYZE": "Analizar",
+    "LOADING": "Cargando...",
+    "SECTION": {
+      "PERPETUAL_SECTOR": "Sector perenne",
+      "OUT_OF_JUDICIAL_RECOVERY": "Fuera de recuperación judicial",
+      "RETURN_ON_EQUITY": "Retorno sobre patrimonio",
+      "PROFIT_GROWTH_5Y": "Crecimiento de beneficio (Últ. 5 años)",
+      "NET_MARGIN": "Margen neto",
+      "SHORT_TERM_DEBT_CAPACITY": "Capacidad de pagar deuda a corto plazo",
+      "NET_DEBT_OVER_EQUITY": "Deuda neta sobre patrimonio",
+      "PRICE_TO_BOOK_AND_EARNINGS": "Precio en relación al patrimonio y beneficio",
+      "FINANCIAL_LEVERAGE": "Apalancamiento financiero",
+      "OPERATIONAL_EFFICIENCY": "Eficiencia operativa"
+    }
+  }
+}
